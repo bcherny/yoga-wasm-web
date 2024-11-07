@@ -3,28 +3,23 @@ import yoga from "./tmp/yoga.mjs";
 
 export * from "./yoga/javascript/src_js/generated/YGEnums.js";
 
-export default async function (wasm) {
+import yoga from "./yoga.wasm" with { type: "file" };
+import { file } from "bun";
+
+export default async function() {
   const mod = await yoga({
     instantiateWasm(info, receive) {
-      WebAssembly.instantiate(wasm, info).then((instance) => {
-        if (instance instanceof WebAssembly.Instance) {
-          receive(instance);
-        } else {
-          receive(instance.instance);
-        }
+      file(yoga).arrayBuffer().then((wasm) => {
+        WebAssembly.instantiate(wasm, info).then((instance) => {
+          if (instance instanceof WebAssembly.Instance) {
+            receive(instance);
+          } else {
+            receive(instance.instance);
+          }
+        });
       });
     },
   });
   return wrapAsm(mod);
 }
 
-export async function initStreaming(response) {
-  const mod = await yoga({
-    instantiateWasm(info, receive) {
-      WebAssembly.instantiateStreaming(response, info).then(({ instance }) => {
-        receive(instance);
-      });
-    },
-  });
-  return wrapAsm(mod);
-}
