@@ -1,6 +1,6 @@
 CC=emcc
 
-all: clean dir wasm
+all: clean dir wasm wasmb64
 
 wasm:
 	$(CC) yoga/yoga/*.cpp yoga/yoga/**/*.cpp yoga/javascript/src_native/*.cc \
@@ -30,6 +30,10 @@ wasm:
 		-s INCOMING_MODULE_JS_API=['instantiateWasm']\
 		-s EXPORT_NAME="yoga" \
 		-o tmp/yoga.mjs
+
+wasmb64:
+	./node_modules/.bin/wasm2js ./tmp/yoga.wasm > ./tmp/yoga.js
+	sed -i '' 's/module\.exports = /export default /g' tmp/yoga.js
 
 clean:
 	rm -rf tmp bun
