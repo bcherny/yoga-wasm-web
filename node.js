@@ -1,6 +1,6 @@
 import initYoga from "./index.js";
 
-import yoga from "./dist/yoga.wasm" with { type: "file" };
+import yoga from "./yoga.wasm" with { type: "file" };
 import { file } from "bun";
 
 const Yoga = await initYoga(

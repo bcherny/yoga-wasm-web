@@ -26,7 +26,6 @@
     },
     "./auto": {
       "types": "./dist/auto.d.ts",
-      "browser": "./dist/browser.js",
       "default": "./bun/node.js"
     }
   },

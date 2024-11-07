@@ -12,7 +12,7 @@ let wrapAsm = await readFile("./yoga/javascript/src_js/wrapAsm.d.ts");
 wrapAsm = wrapAsm
   .toString()
   .replace(/\.\/generated\/YGEnums/g, "./generated/YGEnums.js");
-await writeFile("./dist/wrapAsm.d.ts", wrapAsm);
+await writeFile("./dist/node.d.ts", wrapAsm);
 
 await copyFile(
   "./yoga/javascript/src_js/generated/YGEnums.d.ts",

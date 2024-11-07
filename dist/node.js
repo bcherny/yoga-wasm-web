@@ -1,4 +1,4 @@
-import yoga$1 from './dist/yoga.wasm' assert { type: 'file' };
+import yoga$1 from './yoga.wasm' assert { type: 'file' };
 import { file } from 'bun';
 
 function getDefaultExportFromCjs (x) {
