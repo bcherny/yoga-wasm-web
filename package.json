@@ -30,7 +30,8 @@
     }
   },
   "scripts": {
-    "build": "make && rollup -c",
+    "build": "npm run compile-yoga && rollup -c",
+    "compile-yoga": "make",
     "typecheck": "tsc --noEmit",
     "test": "pnpm test:asm && pnpm test:wasm",
     "test:asm": "ASM=true vitest run --dir ./test",
