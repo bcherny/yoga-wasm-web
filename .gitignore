@@ -4,10 +4,3 @@ yarn.lock
 .DS_Store
 
 .vscode
-
-build
-tmp
-dist/*
-!dist/index.d.ts
-!dist/asm.d.ts
-!dist/auto.d.ts
