@@ -4,7 +4,7 @@ import yoga from "./yoga.wasm" with { type: "file" };
 import { file } from "bun";
 
 const Yoga = await initYoga(
-  file(yoga)
+  await file(yoga).arrayBuffer()
 );
 
 export * from "./yoga/javascript/src_js/generated/YGEnums.js";
