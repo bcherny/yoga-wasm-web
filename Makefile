@@ -31,6 +31,8 @@ wasm:
 		-s EXPORT_NAME="yoga" \
 		-o tmp/yoga.mjs
 
+	bun build --bundle node.js --outdir bun --target bun
+
 asm:
 	$(CC) yoga/yoga/*.cpp yoga/yoga/**/*.cpp yoga/javascript/src_native/*.cc \
 		--bind \
@@ -43,7 +45,6 @@ asm:
 		-fno-rtti \
 		-DEMSCRIPTEN_HAS_UNBOUND_TYPE_NAMES=0 \
 		--closure 1 \
-		--memory-init-file 0 \
 		-s WASM=0 \
 		-s WASM_ASYNC_COMPILATION=0 \
 		-s USE_CLOSURE_COMPILER=1 \
@@ -61,7 +62,7 @@ asm:
 		-o tmp/yoga-asm.mjs
 
 clean:
-	rm -rf tmp 
+	rm -rf tmp bun
 
 dir:
 	mkdir -p tmp
