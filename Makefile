@@ -43,7 +43,7 @@ asm:
 		-fno-rtti \
 		-DEMSCRIPTEN_HAS_UNBOUND_TYPE_NAMES=0 \
 		--closure 1 \
-		--memory-init-file 0 \
+		# --memory-init-file 0 \
 		-s WASM=0 \
 		-s WASM_ASYNC_COMPILATION=0 \
 		-s USE_CLOSURE_COMPILER=1 \

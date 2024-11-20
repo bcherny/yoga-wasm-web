@@ -21,7 +21,7 @@ await copyFile(
 
 export default [
   {
-    input: ["asm.js", "index.js", "node.js", "browser.js"],
+    input: ["index.js", "node.js", "browser.js"],
     output: {
       dir: "dist",
       format: "esm",
@@ -31,11 +31,11 @@ export default [
       commonjs({
         esmExternals: true,
       }),
-      minify(
-        defineRollupSwcMinifyOption({
-          compress: { passes: 2 },
-        })
-      ),
+      // minify(
+      //   defineRollupSwcMinifyOption({
+      //     compress: { passes: 2 },
+      //   })
+      // ),
     ],
   },
 ];
