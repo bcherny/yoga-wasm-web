@@ -21,7 +21,7 @@ await copyFile(
 
 export default [
   {
-    input: ["index.js", "node.js", "browser.js"],
+    input: ["index.js", "node.js"],
     output: {
       dir: "dist",
       format: "esm",
